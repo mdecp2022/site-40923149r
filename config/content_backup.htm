@@ -19,7 +19,20 @@ user_input_temp = input("請輸入攝氏溫度值:")
 # 接著列出 user_input_temp 變數的資料型別
 print(type(user_input_temp))</pre>
 <p>心得:打完程式後，推上倉儲後，只需輸入攝氏溫度值，程式就會幫你跑出華氏溫度值。</p>
-<h1>W13</h1>
+<p><a href="https://40923149r.github.io/site-40923149r/content/Brython.html?src=https://gist.githubusercontent.com/40923149r/382b44b0b396242be95282d1079aa117/raw/122fa06e7e7506e4f6da2fe4c9d9baa5d81bfd12/w12_hw-2.py">ex1</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># Brython 的 input() 可以接受輸入提示字串, 跳出瀏覽器輸入表單後, 將輸入內容以字串取回
+user_input_temp = input("請輸入攝氏溫度值:")
+# 接著列出 user_input_temp 變數的資料型別
+print(type(user_input_temp))
+# 到這裡已知利用 input() 函式將傳回字串, 接著以 float() 將字串轉為浮點數
+user_input_temp = float(user_input_temp)
+# 因為攝氏溫度乘上 9/5 之後再加上 32 就可以得到對應的華氏溫度值
+Fahrenheit = (user_input_temp*9/5) + 32
+# 到這裡, Fahrenheit 資料型別為浮點數, 而 user_input_temp 在第 8 行也轉為浮點數
+# 要將兩個浮點數與字串相加, 都必須透過 str() 轉為字串
+print("攝氏 " + str(user_input_temp) + " 度, 等於華氏 " + str(Fahrenheit) + " 度.")</pre>
+<p>心得:若我點開連結，輸入40，接著就會跑出攝氏 40度，等於華氏104度。</p>
+<p><img caption="false" height="637" src="/images/1222-5.png" width="1080"/></p><h1>W13</h1>
 <p>Question:</p>
 <p>Q1.何謂 Brython 程式環境?</p>
 <p>A1.</p>
@@ -38,13 +51,11 @@ print(type(user_input_temp))</pre>
 <p>A3.</p>
 <p>Q4.如何將近端的動態與靜態網站內容, 以 http 網路協定提交推送到 Github 雲端主機? (為什麼要將資料存在雲端?能不能直接在雲端上編寫 Brython 程式?然後將程式存)</p>
 <p>A4.</p>
-<p></p><h1>Brython</h1>
-=======</div>
 </div>
 </div>
-=======</div>
+</div>
+</div>
 <h1>Brython</h1>
-<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 6d34d078b8e48689570c1f21928f53734639477c</p>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</a></p>
