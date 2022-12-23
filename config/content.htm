@@ -1,6 +1,25 @@
 <h1>About</h1>
 <p>cmsite: wcms use <a href="https://github.com/mdecycu/cmsimde">https://github.com/mdecycu/cmsimde</a> as submodule</p>
 <h1>HW</h1>
+<h2>W5</h2>
+<p><a href="https://mdecp2022.github.io/site-40923149r/content/Brython.html?src=https://gist.githubusercontent.com/40923149r/fd0e15acb505027950a9765a0ca23525/raw/43eb550717cd54bf72524dc343b8c2dd351c179d/w5">Password</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 導入亂數模組
+import random
+# 導入字串模組
+import string
+# 利用 def 關鍵字定義函式
+# 函式的輸入變數可以設定初始值
+def password_generator(size=4, chars=string.ascii_lowercase + string.digits):
+    # 函式內以多行註解說明函式功能
+    """Generate random password
+    """
+    # 利用 return 關鍵字將所產生的亂數字串傳回
+    return ''.join(random.choice(chars) for _ in range(size))
+# 建立一個變數與隨後的字串對應
+pass_string = "abcdefghkmnpqrstuwxyz123456789"
+# 利用重複迴圈呼叫 password_generator() 函式 10 次
+for i in range(10):
+    print(password_generator(4, pass_string))</pre>
 <h2>W6</h2>
 <div>
 <div>請將<a href="https://gist.githubusercontent.com/mdecycu/2c6323eff49b496d1bafd210f3ec9707/raw/035d6948a233beceba7a7974eef0a0a4ef9c17e9/cp1b_2022_random_draw.py" rel="noreferrer noopener" tabindex="-1" target="_blank" title="https://gist.githubusercontent.com/mdecycu/2c6323eff49b496d1bafd210f3ec9707/raw/035d6948a233beceba7a7974eef0a0a4ef9c17e9/cp1b_2022_random_draw.py">抽點程式</a>與<a href="https://gist.githubusercontent.com/mdecycu/2c6323eff49b496d1bafd210f3ec9707/raw/035d6948a233beceba7a7974eef0a0a4ef9c17e9/cp2022_w6b_gen_pages_link.py" rel="noreferrer noopener" tabindex="-1" target="_blank" title="https://gist.githubusercontent.com/mdecycu/2c6323eff49b496d1bafd210f3ec9707/raw/035d6948a233beceba7a7974eef0a0a4ef9c17e9/cp2022_w6b_gen_pages_link.py">擷取個人靜態網頁</a>的程式結合, 可以選定列出人數後, 在頁面中顯示出該學員的靜態網頁連結.</div>
