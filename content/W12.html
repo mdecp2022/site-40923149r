@@ -2,7 +2,7 @@
         <head>
         <title>cmsite</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='W6.html'>W6</a><li><a href='W7.html'>W7</a><li><a href='W12.html'>W12</a><li><a href='W13.html'>W13</a><li><a href='Brython.html'>Brython</a></li>
+                     <li><a href='About.html'>About</a><li class='has-children'><a href='HW.html'>HW</a><ul class='dropdown'><li><a href='W6.html'>W6</a><li><a href='W7.html'>W7</a><li><a href='W12.html'>W12</a><li><a href='W13.html'>W13</a></li></ul><li><a href='Brython.html'>Brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -142,7 +142,7 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">W7 << <a href='W7.html'>Previous</a> <a href='W13.html'>Next</a> >> W13<br /><h1>W12</h1>
-<p><a href="https://40923149r.github.io/site-40923149r/content/Brython-2.html?src=https://gist.githubusercontent.com/40923149r/5b47616187e57e15e84e144cf3f56900/raw/d3f6936f2b3106a132631cccbba02a6d410219ac/w12_hw-1.py">hw 第一個練習</a></p>
+<p><a href="https://mdecp2022.github.io/site-40923149r/content/Brython.html?src=https://gist.githubusercontent.com/40923149r/5b47616187e57e15e84e144cf3f56900/raw/d3f6936f2b3106a132631cccbba02a6d410219ac/w12_hw-1.py">ex1</a> Brython input() 使用範例(溫度)</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># Brython 的 input() 可以接受輸入提示字串, 跳出瀏覽器輸入表單後, 將輸入內容以字串取回
 user_input_temp = input("請輸入攝氏溫度值:")
 # 接著列出 user_input_temp 變數的資料型別
@@ -162,7 +162,7 @@ Fahrenheit = (user_input_temp*9/5) + 32
 print("攝氏 " + str(user_input_temp) + " 度, 等於華氏 " + str(Fahrenheit) + " 度.")</pre>
 <p><span style="color: #ff0000;">心得</span>:若我點開連結，<span style="color: #ff0000;">輸入40</span>，接著就會跑出<span style="color: #ff0000;">攝氏 40度</span>，等於<span style="color: #ff0000;">華氏104度</span>。</p>
 <p><img caption="false" height="295" src="./../images/1222-5.png" width="500"/></p>
-<p><a href="https://mdecp2022.github.io/site-40923149r/content/Brython.html?src=https://gist.githubusercontent.com/40923149r/5ec87fb47ed775a5892753ff5108b1b5/raw/d8e5ab837f07741454f9aaa153a7774ce224ad70/w12_hw-3.py">ex3</a> 動態網頁中的 Brython 環境設置</p>
+<p><a href="https://mdecp2022.github.io/site-40923149r/content/Brython.html?=https://gist.githubusercontent.com/40923149r/5ec87fb47ed775a5892753ff5108b1b5/raw/82ee0ff36c1b5af3be8c7da8861494fe9dea13f7/w12_hw-3.py">ex3</a> 動態網頁中的 Brython 環境設置</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">&lt;h3&gt;w12&lt;/h3&gt;
 &lt;!-- 
 在動態網站頁面中啟用 Brython 執行環境的用法, 請注意動態網站執行所在路徑
@@ -195,7 +195,8 @@ brython_div &lt;= user_input_temp
 # 之後若要列出 html, 則需要透過 Brython 的 html 模組
 // ]]&gt;&lt;/script&gt;
 &lt;/p&gt;</pre>
-<p></p><br />W7 << <a href='W7.html'>Previous</a> <a href='W13.html'>Next</a> >> W13</div>
+<p></p>
+<br />W7 << <a href='W7.html'>Previous</a> <a href='W13.html'>Next</a> >> W13</div>
         
     <!-- footer -->
       <div class="container">
