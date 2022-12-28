@@ -32,6 +32,58 @@ for i in range(10):
 <div data-tid="messageBodyContent">
 <div><a href="https://stud.cycu.org:8000" title="https://stud.cycu.org:8000/">https://stud.cycu.org:8000</a> 是一個建立在工作站室電腦上的一個動態網站, 透過在 Ubuntu 伺服器上的一個 demo 帳號與兩個 ports (9000 及 8000) 完成, 2022 Fall 每位修課學員應該都收到一封信, 告知在這台 stud.cycu.org 伺服器上的獨一帳號密碼與 ports (<a href="https://nfuedu-my.sharepoint.com/:x:/g/personal/yen_nfu_edu_tw/ET-JZNPkNtZDhFiLt8BGZZ4BFMVV1HE73WQt1V44y6vnCQ?e=S1eVbz" title="https://nfuedu-my.sharepoint.com/:x:/g/personal/yen_nfu_edu_tw/et-jznpkntzdhfilt8bgzz4bfmvv1he73wqt1v44y6vncq?e=s1evbz">stud.cycu.org port 分配表)</a>, 其中 9xxx 用於內部而 8xxx 則用於外部.</div>
 <div>stud.cycu.org 是用來取代 Replit 雲端應用程式服務, 設定完成後, 每位學員都能直接在瀏覽器中修改動態與 Github Pages 靜態網站的內容, 也能直接將各種練習編寫的 Brython 程式存在個人的 Gist, 然後導入動態或靜態網站中執行.</div>
+<h2>W10</h2>
+<h2>W11</h2>
+<div>
+<div>w11 作業:</div>
+<div>1.請問 w11 週小考有幾人缺考?</div>
+<div>2.請問 w11 週小考平均分數多少?       </div>
+<div><a href="https://mdecp2022.github.io/site-40923149r/content/Brython.html?src=https://gist.githubusercontent.com/40923149r/960defeaa659cc0394fd776b5d4db1bf/raw/0d10e1e1a2ee322fa174f09c9b06645556cf6341/W11">小考結果</a></div>
+<div>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import ast
+ 
+# get stud_list first
+ 
+def get_stud(c_name):
+    courses = {"1a": "0747", "1b": "0761", "2a": "0773", "2b": "0786"}
+    c = courses[c_name]
+    url = "https://nfu.cycu.org/?semester=1111&amp;courseno=" + c + "&amp;column=True"
+    data = open(url).read().split("\n")
+    stud = data[:-1]
+    return stud
+     
+cp_stud = get_stud("1a")
+ 
+# get w10 quiz result
+cp_w10_quiz_url = "https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/9e8bf693a2805631aa12992db4d4f23e0f64e868/2022_1112_cp1a_w10_quiz.json"
+ 
+def get_score(url):
+    json_data = open(url).read()
+    big_dict = ast.literal_eval(json_data)
+    data = big_dict["body"]["testuser"]
+    quiz_dict = {}
+    for i in data:
+        stud_id = data[i]["user_name"]
+        stud_score = int(float(data[i]["total_score"]))
+        quiz_dict[stud_id] = stud_score
+    return quiz_dict
+     
+cp_quiz = get_score(cp_w10_quiz_url)
+cp_abs = []
+for stud in cp_stud:
+    try:
+        print(stud, cp_quiz[stud])
+    except:
+        # 缺考者沒有 quiz 成績
+        print(stud, "缺")
+        cp_abs.append(stud)
+# 列出缺考名單
+print("="*20)
+print("以下為 w10 缺考名單:")
+for stud in cp_abs:
+    print(stud)</pre>
+</div>
+</div>
 <h2>W12</h2>
 <p><a href="https://mdecp2022.github.io/site-40923149r/content/Brython.html?src=https://gist.githubusercontent.com/40923149r/5b47616187e57e15e84e144cf3f56900/raw/d3f6936f2b3106a132631cccbba02a6d410219ac/w12_hw-1.py">ex1</a> Brython input() 使用範例(溫度)</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># Brython 的 input() 可以接受輸入提示字串, 跳出瀏覽器輸入表單後, 將輸入內容以字串取回
