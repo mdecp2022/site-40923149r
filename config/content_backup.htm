@@ -194,7 +194,72 @@ print(c, f)</pre>
 <p>Q3.如何將在近端編寫的程式儲存至個人的 Gist 區域? 如何引用 Gist 程式?</p>
 <p>A3.</p>
 <p>Q4.如何將近端的動態與靜態網站內容, 以 http 網路協定提交推送到 Github 雲端主機? (為什麼要將資料存在雲端?能不能直接在雲端上編寫 Brython 程式?然後將程式存)</p>
-<p>A4.</p><h1>Brython</h1>
+<p>A4.</p>
+<h2>W14</h2>
+<div>
+<div>已知 <a href="https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/a0be253dc36fb3d0d2e1878950dae0b13d07a8f6/2022_1208_cp_w14_1b_quiz.json" rel="noreferrer noopener" tabindex="-1" target="_blank" title="https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/a0be253dc36fb3d0d2e1878950dae0b13d07a8f6/2022_1208_cp_w14_1b_quiz.json">w14 1b 計算機程式抽考成績的 json 檔案</a>, 請在個人網站中的 HW (H1) 頁面下的 w14 (H2) 頁面中以 Brython 程式列出缺考人員名單.<a href="https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/a48d36ae883bde8efd07b25bfddaed8f13200353/2022_1209_cp_w14_1a_quiz.json" rel="noreferrer noopener" tabindex="-1" target="_blank" title="https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/a48d36ae883bde8efd07b25bfddaed8f13200353/2022_1209_cp_w14_1a_quiz.json">w14 1a quiz.json</a></div>
+<div>
+<div>參考資料:<a href="https://teams.microsoft.com/l/message/19:e34839ce9d16476184e0a0f1ea011415@thread.tacv2/1668566938222?tenantId=e650a2d7-e923-45bb-8fa6-1af5b0f72f09&amp;groupId=80d5bdeb-f306-4937-b63e-1e4c0b842936&amp;parentMessageId=1668566938222&amp;teamName=cp2022&amp;channelName=w11&amp;createdTime=1668566938222&amp;allowXTenantAccess=false" internal-url="" rel="noreferrer noopener" tabindex="-1" target="_blank" title="https://teams.microsoft.com/l/message/19:e34839ce9d16476184e0a0f1ea011415@thread.tacv2/1668566938222?tenantid=e650a2d7-e923-45bb-8fa6-1af5b0f72f09&amp;groupid=80d5bdeb-f306-4937-b63e-1e4c0b842936&amp;parentmessageid=1668566938222&amp;teamname=cp2022&amp;channelname=w11&amp;createdtime=1668566938222&amp;allowxtenantaccess=false">w11 教學內容</a>.<a href="https://mde.tw/content/Python.html?src=https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/f7a62d775c6c2b7e7e187acbb95efa51ba08853f/giving_cname_json_url_get_score.py" rel="noreferrer noopener" tabindex="-1" target="_blank" title="https://mde.tw/content/python.html?src=https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/f7a62d775c6c2b7e7e187acbb95efa51ba08853f/giving_cname_json_url_get_score.py">輸入班級代號與考試 json 連結列出缺考名單</a> </div>
+<div>
+<div></div>
+<div><span style="background-color: #ffffff; color: #ff0000;"><a href="https://mdecp2022.github.io/site-40923149r/content/Brython.html?src=https://gist.githubusercontent.com/40923149r/3e6d269e16dfb9cc467728b472e6e72d/raw/35a8afac0178e68d35e5d87caadf77a520bd7787/w14" style="background-color: #ffffff; color: #ff0000;">整理出W14考試成績</a></span></div>
+<div>考試成績是從最低分至最高分排序</div>
+<div>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 導入 ast 模組是希望利用其 literal_eval() 將 dict 格式的字串轉為 dict 資料型別
+# 以利隨後的取值運算
+import ast
+# 設計一個 quiz 類別, 其中有兩個成員變數與兩個成員函式
+class quiz:
+    def __init__(self, cname, url):
+        self.cname = cname
+        self.url = url
+    # 定義一個函式, 以班級代號字串作為輸入, 可以傳回各班修課學員的學號數列
+    def get_stud(self):
+        # 將課程的班級代號字串作為 dict 的 key, 而 2022 fall 的課程代號作為對應值
+        # 使用者可以利用班級代號從 courses dict 取出課程代號
+        courses = {"1a": "0747", "1b": "0761", "2a": "0773", "2b": "0786"}
+        # 利用 c_name 從 courses 得到該學期的課程代號
+        c = courses[self.cname]
+        # 利用課程代號從學校教務主機取的該班修課人員名單
+        curl = "https://nfu.cycu.org/?semester=1111&amp;courseno=" + c + "&amp;column=True"
+        # 讀出各修課人員資料後, 以跳行符號切割, 得到的 data 為數列
+        data = open(curl).read().split("\n")
+        # 因為最後一筆資料為空字串, 因此利用數列運算將其去除
+        stud = data[:-1]
+        # get_stud() 函式最後將對應班級的修課人員學號以數列格式傳回
+        return stud
+         
+    def get_score(self):
+        # 利用 open() 與 read() 讀取考試結果 JSON 檔案
+        json_data = open(self.url).read()
+        # 利用 ast.literal_eval() 將字串 dict, 轉為程式可用的 dict 資料型別
+        big_dict = ast.literal_eval(json_data)
+        # 從 big_dict 中, 取出 body 中的 testuser 欄位資料
+        data = big_dict["body"]["testuser"]
+        # 定義一個空 dict 資料變數, 隨後利用迴圈逐一將學號作為 key, 考試成績為 valude
+        # 組成 quiz_dict 的資料內容, 以便之後可以用學號當作輸入, 取得該員考試成績
+        quiz_dict = {}
+        for i in data:
+            # data 資料中的 user_name 為考試學員的帳號, 也就是學號
+            stud_id = data[i]["user_name"]
+            # data 資料中的 total_score 欄位為考試成績
+            # 因為考試成績為字串, 先轉為浮點數後, 再轉為整數
+            stud_score = int(float(data[i]["total_score"]))
+            # 逐一以學號為 key, 考試成績為對應 value, 將資料放入 quiz_dict
+            quiz_dict[stud_id] = stud_score
+        # 取得各學員的考試成績 quiz_dict 後, 將資料傳回
+        return quiz_dict
+url = "https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/a48d36ae883bde8efd07b25bfddaed8f13200353/2022_1209_cp_w14_1a_quiz.json"
+cpb_w14 = quiz("1a", url)
+# 利用 "1b" 作為輸入從 get_stud() 取出該班修課學員學號數列
+cp_stud = cpb_w14.get_stud()
+cp_score = cpb_w14.get_score()
+print(cp_score)</pre>
+</div>
+</div>
+</div>
+</div>
+<h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</a></p>
@@ -473,4 +538,7 @@ doc["aitetris"].bind("click", aitetris.do)
 <div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console2"></textarea></div>
 <p><!-- Brython 程式執行的結果, 都以 brython_div1 作為切入位置 --></p>
 <div id="brython_div2"></div>
-<!-- editor2 結束 --><hr/></div></div></div></div>
+<!-- editor2 結束 --><hr/></div>
+</div>
+</div>
+</div>
